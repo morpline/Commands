@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>yes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <h1>type something</h1>
+        <div class="text"></div>
+        <script>
+            let ps = document.querySelectorAll("p");
+            const body = document.querySelector(".text");
+            function animate() {
+                requestAnimationFrame(animate);
+                ps.forEach(p => {
+                    // p.style.fontSize = `${(Math.random*50)}px`;
+                    p.style.fontSize = `${Math.random()*50}px`;
+                    console.log("animated")
+                })
+            }
+            function add (e) {
+                console.log("added")
+                const p = document.createElement("p");
+                p.innerHTML=e.key;
+                body.append(p);
+                 ps = document.querySelectorAll("p");
+
+            }
+            document.addEventListener("keyup",e => add(e));
+            animate();
+        </script>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+            }
+            .text{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            p{
+                width:15px;
+                height:15px;
+                display: flex;
+            }
+        </style>
+    </body>
+</html>
